@@ -1,15 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import { Article } from "@/lib/content/types";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface ArticlePreviewCardProps {
   article: Article;
   headingLevel?: "h2" | "h3";
+  showRemoveAction?: boolean;
 }
 
 export function ArticlePreviewCard({
   article,
   headingLevel = "h2",
+  showRemoveAction = false,
 }: ArticlePreviewCardProps) {
   const HeadingTag = headingLevel;
 
@@ -27,6 +30,19 @@ export function ArticlePreviewCard({
             <span className="rounded border border-border px-1.5 py-0.5 text-[10px] uppercase tracking-wider font-medium">
               Demo
             </span>
+            {showRemoveAction ? (
+              <BookmarkButton
+                articleId={article.id}
+                articleTitle={article.title}
+                variant="remove"
+              />
+            ) : (
+              <BookmarkButton
+                articleId={article.id}
+                articleTitle={article.title}
+                variant="icon"
+              />
+            )}
           </div>
         </div>
 

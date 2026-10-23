@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Article, PillarMetadata } from "@/lib/content/types";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface ArticleReadingTemplateProps {
   article: Article;
@@ -67,20 +68,27 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
         </p>
 
         {/* Byline & Metadata Strip */}
-        <div className="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-muted-foreground pt-4 border-t border-border">
-          <div className="flex items-center space-x-2">
-            <span className="font-medium text-foreground">{article.author.name}</span>
-            <span>•</span>
-            <span>{article.author.role}</span>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-y-3 gap-x-4 text-xs text-muted-foreground pt-4 border-t border-border">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <div className="flex items-center space-x-2">
+              <span className="font-medium text-foreground">{article.author.name}</span>
+              <span>•</span>
+              <span>{article.author.role}</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span>•</span>
+              <time dateTime={article.publishedAt}>
+                October 23, 2026
+              </time>
+              <span>•</span>
+              <span>{article.readingTime}</span>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <span>•</span>
-            <time dateTime={article.publishedAt}>
-              October 23, 2026
-            </time>
-            <span>•</span>
-            <span>{article.readingTime}</span>
-          </div>
+          <BookmarkButton
+            articleId={article.id}
+            articleTitle={article.title}
+            variant="full"
+          />
         </div>
       </header>
 
@@ -166,17 +174,24 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
           ))}
         </div>
 
-        {/* Back link */}
-        <div className="flex items-center justify-between pt-4 border-t border-border">
+        {/* Back link & Bookmark control */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border">
           <Link
             href={`/${pillar.slug}`}
             className="inline-flex items-center text-sm font-medium text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
           >
             ← Back to {pillar.name} Guides
           </Link>
-          <span className="text-xs text-muted-foreground">
-            {article.id}
-          </span>
+          <div className="flex items-center gap-3">
+            <BookmarkButton
+              articleId={article.id}
+              articleTitle={article.title}
+              variant="full"
+            />
+            <span className="text-xs text-muted-foreground font-mono">
+              {article.id}
+            </span>
+          </div>
         </div>
       </footer>
     </article>

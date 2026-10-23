@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { BookmarksProvider } from "@/lib/bookmarks/bookmarks-context";
 
 export const metadata: Metadata = {
   title: "IndieOS — Practical guides for indie developers and solo founders",
@@ -24,11 +25,13 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <SiteHeader />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <BookmarksProvider>
+          <SiteHeader />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+        </BookmarksProvider>
       </body>
     </html>
   );

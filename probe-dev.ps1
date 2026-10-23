@@ -11,7 +11,7 @@ Start-Sleep 50
 
 $resp = $null
 try {
-    $resp = Invoke-WebRequest -Uri 'http://localhost:3000' -UseBasicParsing -TimeoutSec 8
+    $resp = Invoke-WebRequest -Uri 'http://localhost:3001' -UseBasicParsing -TimeoutSec 8
 } catch {
     Write-Output "HTTP_ERROR: $_"
 }

@@ -277,3 +277,12 @@ export function getArticlesByPillar(pillar: PillarId): Article[] {
 export function getArticleBySlug(pillar: PillarId, slug: string): Article | undefined {
   return ARTICLES.find((article) => article.pillar === pillar && article.slug === slug);
 }
+
+export function getArticleById(id: string): Article | undefined {
+  return ARTICLES.find((article) => article.id === id);
+}
+
+export function getArticlesByIds(ids: string[]): Article[] {
+  const idSet = new Set(ids);
+  return ARTICLES.filter((article) => idSet.has(article.id));
+}

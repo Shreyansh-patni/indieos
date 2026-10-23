@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { SearchDialog } from "./search-dialog";
+import { useBookmarks } from "@/lib/bookmarks/bookmarks-context";
 
 const NAV_ITEMS = [
   { label: "Ideas", href: "/ideas" },
@@ -14,6 +15,7 @@ const NAV_ITEMS = [
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { savedCount, isLoaded } = useBookmarks();
 
   // Close mobile menu on Escape key, and global search keyboard shortcut (Cmd+K / Ctrl+K)
   useEffect(() => {
@@ -67,7 +69,7 @@ export function SiteHeader() {
           </nav>
         </div>
 
-        {/* Right utilities: Search and mobile menu trigger */}
+        {/* Right utilities: Search, Saved, and mobile menu trigger */}
         <div className="flex items-center space-x-1 sm:space-x-2">
           {/* Desktop Search Trigger */}
           <button
@@ -97,6 +99,39 @@ export function SiteHeader() {
             </kbd>
           </button>
 
+          {/* Desktop Saved Articles Link */}
+          <Link
+            href="/saved"
+            aria-label={
+              isLoaded && savedCount > 0
+                ? `Saved articles (${savedCount} saved)`
+                : "Saved articles"
+            }
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-2.5 py-1.5 text-xs text-muted-foreground hover:border-foreground/40 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <svg
+              className="h-3.5 w-3.5 text-muted-foreground"
+              xmlns="http://www.w3.org/2000/svg"
+              fill={isLoaded && savedCount > 0 ? "currentColor" : "none"}
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+              />
+            </svg>
+            <span>Saved</span>
+            {isLoaded && savedCount > 0 && (
+              <span className="rounded-full bg-muted px-1.5 py-0.2 font-mono text-[10px] font-semibold text-foreground border border-border">
+                {savedCount}
+              </span>
+            )}
+          </Link>
+
           {/* Mobile Search Trigger Icon */}
           <button
             type="button"
@@ -120,6 +155,39 @@ export function SiteHeader() {
               />
             </svg>
           </button>
+
+          {/* Mobile Saved Articles Link */}
+          <Link
+            href="/saved"
+            aria-label={
+              isLoaded && savedCount > 0
+                ? `Saved articles (${savedCount} saved)`
+                : "Saved articles"
+            }
+            className="inline-flex sm:hidden relative items-center justify-center rounded-md p-2 text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors"
+          >
+            <svg
+              className="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill={isLoaded && savedCount > 0 ? "currentColor" : "none"}
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+              />
+            </svg>
+            {isLoaded && savedCount > 0 && (
+              <span
+                className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-foreground"
+                aria-hidden="true"
+              />
+            )}
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -193,6 +261,37 @@ export function SiteHeader() {
             </svg>
             <span>Search Articles</span>
           </button>
+
+          {/* Saved Articles link in mobile menu */}
+          <Link
+            href="/saved"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <div className="flex items-center gap-2.5">
+              <svg
+                className="h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill={isLoaded && savedCount > 0 ? "currentColor" : "none"}
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+              <span>Saved Articles</span>
+            </div>
+            {isLoaded && savedCount > 0 && (
+              <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-semibold text-foreground border border-border">
+                {savedCount}
+              </span>
+            )}
+          </Link>
 
           {NAV_ITEMS.map((item) => (
             <Link
