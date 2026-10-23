@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Article, PillarMetadata } from "@/lib/content/types";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ArticleShareActions } from "@/components/article-share-actions";
 
 interface ArticleReadingTemplateProps {
   article: Article;
@@ -84,11 +85,17 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
               <span>{article.readingTime}</span>
             </div>
           </div>
-          <BookmarkButton
-            articleId={article.id}
-            articleTitle={article.title}
-            variant="full"
-          />
+          <div className="flex flex-wrap items-center gap-2">
+            <BookmarkButton
+              articleId={article.id}
+              articleTitle={article.title}
+              variant="full"
+            />
+            <ArticleShareActions
+              article={article}
+              variant="compact"
+            />
+          </div>
         </div>
       </header>
 
@@ -158,6 +165,32 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
           </p>
         </section>
       </div>
+
+      {/* 8. Article-End Actions: Save & Share */}
+      <section
+        aria-label="Article actions"
+        className="my-10 rounded-lg border border-border bg-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+      >
+        <div>
+          <h3 className="text-sm sm:text-base font-semibold text-foreground tracking-tight">
+            Share or Save this Guide
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Bookmark for your next build session or share the canonical link with other founders.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <BookmarkButton
+            articleId={article.id}
+            articleTitle={article.title}
+            variant="full"
+          />
+          <ArticleShareActions
+            article={article}
+            variant="full"
+          />
+        </div>
+      </section>
 
       {/* Article Footer: Tags and Back Navigation */}
       <footer className="mt-12 pt-8 border-t border-border">
