@@ -4,6 +4,7 @@ import { getAllArticles } from "@/lib/content/articles";
 import { PILLARS } from "@/lib/content/pillars";
 import { PillarId } from "@/lib/content/types";
 import { ArticlePreviewCard } from "@/components/article-preview-card";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export const metadata: Metadata = {
   title: "IndieOS — Practical guides for indie developers and solo founders",
@@ -164,14 +165,21 @@ export default function HomePage() {
             </div>
 
             <article className="group relative rounded-xl border border-border bg-background p-8 sm:p-10 shadow-sm hover:border-foreground/40 transition-colors">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground mb-3">
-                <span className="font-semibold uppercase tracking-wider text-foreground">
-                  {featuredArticle.pillar}
-                </span>
-                <span>•</span>
-                <span>{featuredArticle.readingTime}</span>
-                <span>•</span>
-                <span className="font-mono text-[11px]">{featuredArticle.id}</span>
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground mb-3">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold uppercase tracking-wider text-foreground">
+                    {featuredArticle.pillar}
+                  </span>
+                  <span>•</span>
+                  <span>{featuredArticle.readingTime}</span>
+                  <span>•</span>
+                  <span className="font-mono text-[11px]">{featuredArticle.id}</span>
+                </div>
+                <BookmarkButton
+                  articleId={featuredArticle.id}
+                  articleTitle={featuredArticle.title}
+                  variant="full"
+                />
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground group-hover:underline leading-tight max-w-3xl">
