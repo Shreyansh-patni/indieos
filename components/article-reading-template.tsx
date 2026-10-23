@@ -87,7 +87,7 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
       {/* Demo Notice Banner */}
       <aside
         aria-label="Demo notice"
-        className="mb-8 rounded-lg border border-border bg-muted/40 p-4 text-xs text-muted-foreground leading-relaxed"
+        className="mb-8 rounded-lg border border-border bg-muted p-4 text-xs text-muted-foreground leading-relaxed"
       >
         <p>
           <strong className="text-foreground">Illustrative Demo Content:</strong> This article detail page verifies the reading layout, typography rhythm, responsive boundaries, and metadata structure for IndieOS V1. The full researched guide is scheduled in the editorial backlog and protected with <code>noindex</code> directives.
@@ -95,7 +95,7 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
       </aside>
 
       {/* Main Article Body (Demonstrating typography blocks: headings, paragraphs, callout, lists) */}
-      <div className="space-y-6 text-foreground/90 leading-relaxed text-base sm:text-lg">
+      <div className="space-y-6 text-foreground leading-relaxed text-base sm:text-lg">
         <section>
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground mb-3">
             1. Overview and Core Problem
@@ -109,7 +109,7 @@ export function ArticleReadingTemplate({ article, pillar }: ArticleReadingTempla
         </section>
 
         {/* Editorial Callout */}
-        <div className="border-l-4 border-foreground bg-muted/60 p-5 rounded-r-lg my-6">
+        <div className="border-l-4 border-foreground bg-muted p-5 rounded-r-lg my-6">
           <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
             Key Takeaway
           </p>

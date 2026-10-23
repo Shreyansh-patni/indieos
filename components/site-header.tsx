@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ThemeToggle } from "./theme-toggle";
 import { SearchDialog } from "./search-dialog";
 
 const NAV_ITEMS = [
@@ -40,7 +39,7 @@ export function SiteHeader() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Brand wordmark */}
         <div className="flex items-center space-x-8">
@@ -68,7 +67,7 @@ export function SiteHeader() {
           </nav>
         </div>
 
-        {/* Right utilities: Search, Theme toggle, and mobile menu trigger */}
+        {/* Right utilities: Search and mobile menu trigger */}
         <div className="flex items-center space-x-1 sm:space-x-2">
           {/* Desktop Search Trigger */}
           <button
@@ -121,8 +120,6 @@ export function SiteHeader() {
               />
             </svg>
           </button>
-
-          <ThemeToggle />
 
           {/* Mobile menu button */}
           <button

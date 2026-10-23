@@ -75,7 +75,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Demo Safeguard Banner */}
-      <div className="bg-muted/60 border-b border-border py-2.5 px-4 text-center text-xs text-muted-foreground">
+      <div className="bg-muted border-b border-border py-2.5 px-4 text-center text-xs text-muted-foreground">
         <p>
           <strong className="text-foreground">Demo Preview:</strong> All
           articles shown below are illustrative records from the V1 content

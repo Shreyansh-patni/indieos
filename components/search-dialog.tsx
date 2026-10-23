@@ -108,7 +108,7 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-background/80 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/30 transition-opacity"
         aria-hidden="true"
         onClick={onClose}
       />
@@ -119,7 +119,7 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="search-dialog-title"
-        className="relative z-50 w-full max-w-2xl rounded-xl border border-border bg-card shadow-xl overflow-hidden flex flex-col max-h-[85vh] animate-in fade-in-0 zoom-in-95 duration-100"
+        className="relative z-50 w-full max-w-2xl rounded-xl border border-border bg-background shadow-lg overflow-hidden flex flex-col max-h-[85vh] animate-in fade-in-0 zoom-in-95 duration-100"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 id="search-dialog-title" className="sr-only">
@@ -228,7 +228,7 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
                     <Link
                       href={article.canonicalPath}
                       onClick={onClose}
-                      className="group block rounded-lg border border-transparent p-3 sm:p-4 hover:border-border hover:bg-muted/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="group block rounded-lg border border-transparent p-3 sm:p-4 hover:border-border hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground mb-1">
                         <span className="font-semibold uppercase tracking-wider text-foreground">

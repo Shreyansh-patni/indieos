@@ -49,7 +49,7 @@ export default function GrowthPillarPage() {
         {/* Demo safeguard notice */}
         <aside
           aria-label="Demo notice"
-          className="mt-12 rounded-lg border border-border bg-muted/50 p-4 text-center text-xs text-muted-foreground leading-relaxed"
+          className="mt-12 rounded-lg border border-border bg-muted p-4 text-center text-xs text-muted-foreground leading-relaxed"
         >
           <p>
             <strong>Demo Foundation:</strong> These records represent the initial content architecture for the {pillar.name} pillar. Individual article reading templates will be established in subsequent slices and are protected with <code>noindex</code> directives.
