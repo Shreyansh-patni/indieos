@@ -134,7 +134,7 @@ A reader who knows IndieOS and wants to browse a pillar, find a specific topic, 
 
 ### Phase 0 — PRD and design approval
 
-Outputs: approved PRD, documented review of the supplied references, a proposed visual direction, information architecture, content schema, relevant skill shortlist and acceptance checklist. No implementation changes yet. Do not create a separate DESIGN-SYSTEM.md during the reference-review step; that work remains a later, explicitly approved activity after the visual direction is agreed.
+Outputs: approved PRD, documented review of the supplied references, a proposed visual direction, information architecture, content schema, relevant skill shortlist and acceptance checklist. No implementation changes yet. Docs/DESIGN-SYSTEM.md exists as the draft visual specification and parent design contract, incorporating the locked monochrome palette tokens and light/dark theme rules.
 
 **Exit gate:** Product Owner approves the PRD and first design reference/screens.
 
@@ -199,6 +199,8 @@ Keep the header lightweight and usable at narrow widths. On mobile, any collapse
 | `/robots.txt` | Crawl guidance and sitemap reference | Prevent demo indexation where possible; deploy-level `noindex` remains mandatory | Allows required assets and references sitemap |
 
 **Routing convention:** use only the lowercase pillar names shown above and lowercase, hyphen-separated article slugs. The only trailing-slash URL is the homepage `/`. Category and article links, canonicals, RSS entries and sitemap entries must use the same form.
+
+**Note on Newsletter:** There is NO dedicated `/newsletter` route in V1. Newsletter capture is implemented exclusively as an embedded module on the homepage and optional footer, and is gated on provider verification.
 
 ### 7.3 Footer navigation
 
@@ -266,7 +268,7 @@ Priority definitions: **P0 = required for demo V1**, **P1 = required for a produ
 
 ### 9.2 Homepage
 
-- **FR-010 (P0):** Hero H1: “Build a small software business you control” unless Product Owner approves a revision.
+- **FR-010 (P0):** Hero H1: “Build a small software business you control” (locked canonical H1 across all specifications). The phrase “Build the thing. Launch it. Grow on your terms.” may appear as optional secondary deck or subheading copy below the H1.
 - **FR-011 (P0):** State clearly that IndieOS serves indie developers and solo founders and covers Ideas, Build, Launch and Growth.
 - **FR-012 (P0):** Display four pillar cards/sections with short original descriptions and clear links.
 - **FR-013 (P0):** Display featured demo articles and a latest/recent list using fixture data; layout must support fewer items without breaking.
@@ -338,7 +340,7 @@ Priority definitions: **P0 = required for demo V1**, **P1 = required for a produ
 
 ### 9.10 Newsletter
 
-- **FR-075 (P1, dependency-gated):** Select and approve a real newsletter provider before enabling the signup UI.
+- **FR-075 (P1, dependency-gated):** Select and approve a real newsletter provider before enabling the signup UI. In V1, newsletter capture is an embedded module on the homepage and optional footer; there is no dedicated `/newsletter` route.
 - **FR-076 (P1):** The form validates email input, exposes submitting/success/error states and does not claim success unless the provider confirms it.
 - **FR-077 (P1):** The provider, data handling, unsubscribe path and privacy policy language must be verified before production use.
 - **FR-078 (P0):** During demo V1, hide the production signup form if the provider is not configured; do not send data into a mock endpoint.
@@ -447,7 +449,7 @@ These topics align with the existing research backlog. They must not contain inv
 - **Technical article details and components:** selectively use patterns from Reference 01 where they improve code examples, filters, TOC behavior, cards or controls. Its theme toggle may inform interaction details, while IndieOS must use only the approved monochrome tokens.
 - **IndieOS identity:** the final result must feel like a publication for indie developers and bootstrapped software builders, not a reskinned creator blog, generic news template or SaaS dashboard.
 - **Theme:** V1 supports both light and dark modes. Include an accessible site-wide theme toggle. Use the matching Light or Dark grayscale tokens in §11.2, and keep component contrast and states consistent when switching themes.
-- **Typography:** explore an expressive editorial serif for display headlines paired with a highly legible sans-serif for body/UI. Exact font families remain undecided until review; check availability, licensing, readability, performance and the actual repository before choosing.
+- **Typography:** explore an expressive editorial serif for display headlines paired with a highly legible sans-serif for body/UI. The recommended candidate pairing is `DM Serif Display` (display/headings) + `Geist` (body/UI), inspired by Reference 02 (Narra). Note: font licensing, self-hosting options, performance, and final Product Owner approval remain pending before final adoption; do not lock the pairing as final or introduce unverified font licenses.
 - **Color:** use only the supplied monochrome Light and Dark palettes in §11.2. Category pills and status indicators must remain monochrome; communicate meaning with text, shape, iconography or labels rather than chromatic colors.
 - **Homepage composition to explore:** simple wordmark/navigation; a clear editorial hero; a featured article; a latest-articles grid; a concise way to explore the four pillars; a newsletter feature only when its provider works; and a useful footer. Keep the number of sections intentional rather than reproducing every section from Narra.
 - **Article composition to explore:** breadcrumb/category, title and deck, author/date/updated-date/reading-time metadata when valid, prominent hero media, comfortable reading column, table of contents on long articles, semantic body blocks, sources where needed, author information and related articles. On smaller screens, the TOC should move into the reading flow or a keyboard-accessible disclosure rather than occupy a side rail.
@@ -520,7 +522,7 @@ Every shared component must specify its relevant states: default, hover, focus-v
 
 ### 11.4 Required design artifacts before implementation
 
-The following are future implementation gates, not artifacts being created in this reference-review step. Do not create a separate design-system document until the Product Owner approves the proposed reference synthesis.
+The following are implementation gates. Docs/DESIGN-SYSTEM.md and Docs/SCREEN-SPECIFICATIONS.md have been established as the parent visual and screen contracts, pending formal Product Owner approval before coding.
 
 - Approved design direction / visual reference board.
 - Desktop homepage screen.
@@ -864,7 +866,7 @@ These do not block the first local demo implementation unless the work specifica
 3. Confirm a monitored contact email or test a form provider end-to-end.
 4. Make the repository public and enable/configure GitHub Discussions if Giscus comments are wanted.
 5. Confirm current hosting terms, DNS state and apex/`www`/HTTPS redirect behavior before deployment.
-6. Approve final visual direction, typefaces and semantic token assignments before UI coding. The monochrome palette and support for both light and dark themes are fixed; exact token hex values are specified in §11.2.
+6. Approve final visual direction, typefaces (candidate pairing `DM Serif Display + Geist`) and semantic token assignments before UI coding. The monochrome palette and support for both light and dark themes are fixed; exact token hex values are specified in §11.2.
 7. Confirm what counts as the demo preview URL/environment and ensure it cannot accidentally index.
 8. Before public editorial launch, review the 14-article D3 batch and D8 AdSense-readiness gates; no ads or AdSense application before the documented gate passes.
 

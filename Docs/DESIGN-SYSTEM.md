@@ -138,7 +138,7 @@ Map semantic tokens to theme-specific values rather than placing palette hex cod
 | Eyebrow / label | Sans-serif, medium weight, moderate tracking | 11–13 px | 11–12 px |
 | Code | Readable monospace | 13–15 px | 13–14 px |
 
-These are review ranges, not final pixel contracts. The selected fonts and exact type ramp must be approved after reviewing actual screenshots and long-form content. Consider a distinctive, legible editorial serif paired with a neutral sans. Candidate families visible in or compatible with the references may be explored, but no family is mandated or licensed by this document. Verify licensing, local/self-hosting options and performance before adoption.
+These are review ranges, not final pixel contracts. The selected fonts and exact type ramp must be approved after reviewing actual screenshots and long-form content. The recommended candidate pairing is `DM Serif Display` (expressive editorial serif for display and headings) paired with `Geist` (neutral, high-legibility sans-serif for body and UI), inspired by Reference 02 (Narra). Note: font licensing, local/self-hosting options, performance, and final Product Owner approval remain pending before final adoption. Do not lock the pairing as final or introduce unverified font licenses.
 
 ### 5.2 Editorial text rules
 
@@ -243,7 +243,7 @@ Support these content types as needed by the content model: H2/H3 headings, para
 - Inputs have visible labels or accessible names, clear boundaries, focus rings and understandable errors.
 - Placeholder text is never the only label.
 - Search includes empty, loading (if applicable), results, no-results and failure/retry behavior even if implemented entirely client-side.
-- Newsletter is not displayed as a working form until a real provider and privacy notice are configured. In demo mode, show a non-submitting preview only if it is visibly marked as a demo; preferably omit it until the integration works.
+- Newsletter is an embedded homepage and footer component (no dedicated `/newsletter` route in V1); it is not displayed as a working form until a real provider and privacy notice are configured. In demo mode, show a non-submitting preview only if it is visibly marked as a demo; preferably omit it until the integration works. Never display a pretend form.
 - Contact form is hidden until end-to-end verified; otherwise expose only an owner-approved monitored email address, never a fake email.
 - Toasts/announcements use text plus icon and accessible live-region behavior, not color alone.
 
@@ -305,7 +305,7 @@ Before implementation, the Product Owner should approve or mark for revision:
 - [ ] Reference synthesis: Compose typography/spacing + Narra story structure + selected Magic UI patterns.
 - [ ] Strict black/white plus supplied grayscale tokens only.
 - [ ] Light and dark modes plus theme preference behavior.
-- [ ] Typeface direction and real font licensing/hosting plan.
+- [ ] Typeface direction: candidate pairing DM Serif Display + Geist and real font licensing/hosting plan.
 - [ ] Homepage hero composition and featured-article structure.
 - [ ] Article reading column, TOC behavior and cover-image style.
 - [ ] Header utility placement and mobile navigation behavior.

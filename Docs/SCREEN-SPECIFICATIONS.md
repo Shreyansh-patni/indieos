@@ -59,8 +59,8 @@ Explain the publication's value quickly, surface one strong starting point, and 
 
 - Layout: spacious, typography-first and confident. Start from Compose's headline scale/whitespace, but use monochrome surfaces only. Do not copy its colored gradient panel.
 - Suggested eyebrow: `PRACTICAL GUIDES FOR INDEPENDENT BUILDERS` (copy remains editable until editorial approval).
-- Suggested H1 direction: `Build the thing. Launch it. Grow on your terms.` (placeholder design copy, not a final brand tagline).
-- Supporting sentence: one or two lines describing practical guides for ideas, building, launches and growth. Avoid unsupported claims such as “the best” or quantified outcomes.
+- Canonical H1: `Build a small software business you control` (locked canonical H1 per PRD and SEO matrix).
+- Supporting copy / deck: `Build the thing. Launch it. Grow on your terms.` may be retained as optional supporting copy/subheading below the H1, paired with one or two lines describing practical guides across Ideas, Build, Launch and Growth. Avoid unsupported claims such as “the best” or quantified outcomes.
 - CTA/navigation: a text or outlined action to Explore the latest guides; category nav remains the primary route discovery mechanism.
 - Visual treatment: use scale, line breaks, whitespace, monochrome rule/border and editorial alignment. If adding an image/graphic, it must be original/licensed, relevant and not introduce a colored accent motif.
 
@@ -151,7 +151,7 @@ Provide a comfortable, credible long-form reading experience and a clear path to
 
 ### Article typography and blocks
 
-- Body width, line height and paragraph spacing follow `DESIGN-SYSTEM.md`.
+- Body width, line height and paragraph spacing follow `DESIGN-SYSTEM.md`. Candidate font pairing under review is `DM Serif Display` (display/headings) + `Geist` (body/UI), pending licensing, self-hosting verification, and final Product Owner approval.
 - H2/H3 heading IDs are stable enough for TOC anchors and direct links.
 - Supported blocks: paragraphs, lists, nested lists, headings, blockquotes, inline links, images/captions, code blocks, callouts, tables, dividers and source references as content requires.
 - Use only semantic HTML and validated content data.
@@ -248,10 +248,10 @@ Let readers revisit saved guides on the same device without an account.
 
 ## 12. Newsletter module
 
-- Intended placement: homepage near the end of content and optional footer placement.
+- Intended placement: embedded module on the homepage near the end of content and optional footer placement. There is no dedicated `/newsletter` route in V1.
 - Do not implement as a real submission flow until a provider has been selected and tested.
 - Must contain a real label, email validation, consent/privacy wording appropriate to the provider, success response, recoverable error and duplicate-submission handling as supported.
-- If the provider isn't ready, omit it in functional builds or mark any prototype as demo-only and non-submitting.
+- If the provider isn't ready, omit it in functional builds or mark any prototype as demo-only and non-submitting. Never show a fake working submission.
 
 ## 13. RSS `/rss.xml`, sitemap and robots
 
