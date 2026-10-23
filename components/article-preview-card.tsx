@@ -1,13 +1,20 @@
 import React from "react";
+import Link from "next/link";
 import { Article } from "@/lib/content/types";
 
 interface ArticlePreviewCardProps {
   article: Article;
+  headingLevel?: "h2" | "h3";
 }
 
-export function ArticlePreviewCard({ article }: ArticlePreviewCardProps) {
+export function ArticlePreviewCard({
+  article,
+  headingLevel = "h2",
+}: ArticlePreviewCardProps) {
+  const HeadingTag = headingLevel;
+
   return (
-    <article className="group rounded-lg border border-border bg-card p-6 shadow-sm transition-colors flex flex-col justify-between">
+    <article className="group relative rounded-lg border border-border bg-card p-6 shadow-sm hover:border-foreground/40 transition-colors flex flex-col justify-between">
       <div>
         {/* Metadata row */}
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground mb-3">
@@ -23,10 +30,16 @@ export function ArticlePreviewCard({ article }: ArticlePreviewCardProps) {
           </div>
         </div>
 
-        {/* Title */}
-        <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-foreground leading-snug">
-          {article.title}
-        </h2>
+        {/* Title with accessible full-card link */}
+        <HeadingTag className="text-lg sm:text-xl font-semibold tracking-tight text-foreground leading-snug group-hover:underline">
+          <Link
+            href={article.canonicalPath}
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+          >
+            <span className="absolute inset-0 rounded-lg" aria-hidden="true" />
+            {article.title}
+          </Link>
+        </HeadingTag>
 
         {/* Excerpt / Description */}
         <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed">
