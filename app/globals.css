@@ -3,6 +3,35 @@
 @tailwind utilities;
 
 :root {
+  /* Approved Light Monochrome Palette Primitives */
+  --palette-light-base: #FFFFFF;
+  --palette-light-50: #FAFAFA;
+  --palette-light-100: #F5F5F5;
+  --palette-light-200: #E5E5E5;
+  --palette-light-300: #D4D4D4;
+  --palette-light-400: #A3A3A3;
+  --palette-light-500: #737373;
+  --palette-light-600: #525252;
+  --palette-light-700: #404040;
+  --palette-light-800: #262626;
+  --palette-light-900: #171717;
+  --palette-light-950: #0A0A0A;
+
+  /* Approved Dark Monochrome Palette Primitives */
+  --palette-dark-base: #000000;
+  --palette-dark-50: #0A0A0A;
+  --palette-dark-100: #171717;
+  --palette-dark-200: #262626;
+  --palette-dark-300: #373737;
+  --palette-dark-400: #525252;
+  --palette-dark-500: #8A8A8A;
+  --palette-dark-600: #A3A3A3;
+  --palette-dark-700: #D4D4D4;
+  --palette-dark-800: #E5E5E5;
+  --palette-dark-900: #F5F5F5;
+  --palette-dark-950: #FAFAFA;
+
+  /* Semantic Variables - Light Mode Default */
   --background: #FFFFFF;
   --foreground: #171717;
   --card: #FFFFFF;
@@ -20,10 +49,11 @@
   --border: #E5E5E5;
   --input: #D4D4D4;
   --ring: #525252;
+  --destructive: #262626;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #000000;
     --foreground: #F5F5F5;
     --card: #0A0A0A;
@@ -41,15 +71,69 @@
     --border: #262626;
     --input: #373737;
     --ring: #D4D4D4;
+    --destructive: #E5E5E5;
   }
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #F5F5F5;
+  --card: #0A0A0A;
+  --card-foreground: #F5F5F5;
+  --popover: #171717;
+  --popover-foreground: #F5F5F5;
+  --primary: #FAFAFA;
+  --primary-foreground: #000000;
+  --secondary: #171717;
+  --secondary-foreground: #E5E5E5;
+  --muted: #171717;
+  --muted-foreground: #A3A3A3;
+  --accent: #262626;
+  --accent-foreground: #FAFAFA;
+  --border: #262626;
+  --input: #373737;
+  --ring: #D4D4D4;
+  --destructive: #E5E5E5;
+}
+
+.light {
+  --background: #FFFFFF;
+  --foreground: #171717;
+  --card: #FFFFFF;
+  --card-foreground: #171717;
+  --popover: #FFFFFF;
+  --popover-foreground: #171717;
+  --primary: #0A0A0A;
+  --primary-foreground: #FAFAFA;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #262626;
+  --muted: #F5F5F5;
+  --muted-foreground: #525252;
+  --accent: #E5E5E5;
+  --accent-foreground: #171717;
+  --border: #E5E5E5;
+  --input: #D4D4D4;
+  --ring: #525252;
+  --destructive: #262626;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
